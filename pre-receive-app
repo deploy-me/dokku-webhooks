@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+APP=$1; REV=$4
+
+"$(dirname $0)"/trigger pre-receive-app ${APP} rev=${REV}

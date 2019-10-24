@@ -1,0 +1,5 @@
+[plugin]
+description = "Deployme webhooks"
+version = "0.1.0"
+
+[plugin.config]
