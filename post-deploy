@@ -2,6 +2,11 @@
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 
-APP=$1
+join () {
+  IFS=$1; shift; echo "$*"
+}
 
-"$(dirname $0)"/trigger post-deploy ${APP} url=$(get_app_urls url ${APP})
+APP=$1
+URLS=$(join ',' $(get_app_urls urls ${APP}))
+
+"$(dirname $0)"/trigger post-deploy ${APP} urls=${URLS}
