@@ -13,7 +13,7 @@ dokku_log_info1 "Running webhooks for $ACTION $APP"
 
 [[ -f "$HOOKS_FILE" ]] || exit 0
 
-PAYLOAD=$(join '&' action=${ACTION} app=${APP} "$@")
+PAYLOAD=$(join '&' action=${ACTION} app=${APP} key=${SSH_NAME} "$@")
 
 while read URL; do
   if ! curl -sSL -X POST -d ${PAYLOAD} -o/dev/null ${URL}; then
