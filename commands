@@ -27,8 +27,12 @@ case "$1" in
     dokku_log_quiet "URL removed (if it was present)"
     ;;
 
-  help | webhooks:help)
+  webhooks:clear)
+    echo "" > "$HOOKS_FILE"
+    dokku_log_quiet "URLs cleared"
+    ;;
 
+  help | webhooks:help)
     help_content_func() {
       #shellcheck disable=SC2034
       declare desc="return webhooks plugin help content"
