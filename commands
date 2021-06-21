@@ -28,7 +28,7 @@ case "$1" in
     ;;
 
   webhooks:clear)
-    echo "" > "$HOOKS_FILE"
+    echo -n "" > "$HOOKS_FILE"
     dokku_log_quiet "URLs cleared"
     ;;
 
